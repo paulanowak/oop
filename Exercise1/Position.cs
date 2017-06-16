@@ -34,7 +34,7 @@ namespace Chess {
             }
         }
 
-        public string toString() {
+        public override string ToString() {
             return (char)(x - 1 + 'A') + "" + y;
         }
 
