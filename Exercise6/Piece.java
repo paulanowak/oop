@@ -12,11 +12,23 @@ abstract class Piece {
         return this.isWhite;
     }
 
-    public Position Position() {
+    public Position getPosition() {
         return this.pos;
     }
 
+    public void moveTo(Position to) {
+        if (!this.canMoveTo(to)) {
+            throw new RuntimeException("Cannot move to position " + to.toString());
+        }
+        this.pos = to;
+    }
+
     protected abstract boolean canMoveTo(Position to);
+
+    @Override
+    public String toString() {
+        return "Piece at " + this.pos.toString();
+    }
 }
 
 class Pawn extends Piece {
@@ -65,6 +77,5 @@ class Knight extends Piece {
         Position pos = this.pos;
         return Math.abs(pos.getX() - to.getX()) == 2 && Math.abs(pos.getY() - to.getY()) == 1 ||
             Math.abs(pos.getY() - to.getY()) == 2 && Math.abs(pos.getX() - to.getX()) == 1;
-
     }
 }
