@@ -6,25 +6,20 @@ namespace Chess {
 
         public static void Main(string[] args) {
 
-            var knight = new Knight(new Position("A3"), Color.White);
+            var board = new Board();
+            var pieceFactory = new PieceFactory(board);
 
-            knight.OnMove = (piece) => {
-                Console.WriteLine(piece);
-            };
+            var knight = pieceFactory.MakePiece("knight", "A3", Color.White);
+            var king = pieceFactory.MakePiece("king", "E3", Color.Black);
+            var pawn = pieceFactory.MakePiece("pawn", "C1", Color.White);
 
             knight.moveTo(new Position("B5"));
-            knight.moveTo(new Position("C3"));
-            knight.moveTo(new Position("E2"));
+            king.moveTo(new Position("E4"));
+            pawn.moveTo(new Position("C2"));
 
-            var king = new King(new Position("A4"), Color.Black);
-            var pawn = new Pawn(new Position("C5"), Color.White);
-            var board = new Board();
-
-            board[knight.Position] = knight;
-            board[king.Position] = king;
-            board[pawn.Position] = pawn;
-
-            Console.WriteLine(board.NumberOfPieces()); // 3
+            foreach (Piece p in board) {
+                Console.WriteLine(p);
+            }
         }
     }
 }

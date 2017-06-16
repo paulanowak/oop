@@ -10,7 +10,7 @@ namespace Chess {
         protected Position pos;
         protected MoveHandler handler;
 
-        public delegate void MoveHandler(Piece piece);
+        public delegate void MoveHandler(Position oldPosition, Piece piece);
 
         public Piece(Position pos, Color color) {
             this.pos = pos;
@@ -21,10 +21,6 @@ namespace Chess {
             set {
                 this.handler = value;
             }
-        }
-
-        public void Process(MoveHandler handler) {
-            handler(this);
         }
 
         public Color Color {
@@ -62,9 +58,10 @@ namespace Chess {
             if (!this.canMoveTo(to)) {
                 throw new ArgumentException("Cannot move " + this.name() + " to " + to);
             }
+            var oldPos = this.pos;
             this.pos = to;
             if (this.handler != null) {
-                this.handler(this);
+                this.handler(oldPos, this);
             }
         }
 
@@ -96,7 +93,7 @@ namespace Chess {
         }
 
         public override bool canMoveTo(Position to) {
-            return pos.X == to.X && (pos.Y == to.Y + 1 || pos.Y == 0 && to.Y == 2);
+            return pos.X == to.X && (to.Y == pos.Y + 1 || pos.Y == 1 && to.Y == 3);
         }
 
         public override bool canCapture(Piece target) {
@@ -114,7 +111,7 @@ namespace Chess {
         }
 
         public override bool canMoveTo(Position to) {
-            return Math.Abs(pos.X - to.X) == 1 && Math.Abs(pos.Y - to.Y) == 1;
+            return Math.Abs(pos.X - to.X) <= 1 && Math.Abs(pos.Y - to.Y) <= 1;
         }
     }
 

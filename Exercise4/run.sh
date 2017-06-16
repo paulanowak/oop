@@ -1,2 +1,2 @@
 #!/bin/bash
-mcs Program.cs Piece.cs Position.cs Board.cs && ./Program.exe
+mcs Program.cs Piece.cs Position.cs Board.cs PieceFactory.cs && ./Program.exe
