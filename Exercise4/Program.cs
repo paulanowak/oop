@@ -15,7 +15,7 @@ namespace Chess {
 
             knight.moveTo(new Position("B5"));
             king.moveTo(new Position("E4"));
-            pawn.moveTo(new Position("C2"));
+            pawn.moveTo(new Position("C3"));
 
             foreach (Piece p in board) {
                 Console.WriteLine(p);
