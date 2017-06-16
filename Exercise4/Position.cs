@@ -2,6 +2,7 @@ using System;
 
 namespace Chess {
 
+    [Serializable]
     internal class Position {
 
         int x;

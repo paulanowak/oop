@@ -1,6 +1,8 @@
+using System;
 
 namespace Chess {
 
+    [Serializable]
     internal class PieceFactory {
 
         private Board board;

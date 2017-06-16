@@ -20,6 +20,14 @@ namespace Chess {
             foreach (Piece p in board) {
                 Console.WriteLine(p);
             }
+
+            BoardToolbox.Store.Save(board);
+            board = BoardToolbox.Store.Load();
+
+            foreach (Piece p in board) {
+                Console.WriteLine(p);
+            }
+
         }
     }
 }

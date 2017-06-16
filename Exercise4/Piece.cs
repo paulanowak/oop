@@ -4,6 +4,7 @@ namespace Chess {
 
     enum Color { White, Black };
 
+    [Serializable]
     abstract class Piece {
 
         protected Color color;
@@ -71,6 +72,7 @@ namespace Chess {
     }
 
 
+    [Serializable]
     internal class Castle : Piece {
 
         public Castle(Position pos, Color color) : base(pos, color) {}
@@ -84,6 +86,7 @@ namespace Chess {
         }
     }
 
+    [Serializable]
     internal class Pawn : Piece {
 
         public Pawn(Position pos, Color color) : base(pos, color) {}
@@ -102,6 +105,7 @@ namespace Chess {
         }
     }
 
+    [Serializable]
     internal class King : Piece {
 
         public King(Position pos, Color color) : base(pos, color) {}
@@ -115,6 +119,7 @@ namespace Chess {
         }
     }
 
+    [Serializable]
     internal class Knight : Piece {
 
         public Knight(Position pos, Color color) : base(pos, color) {}

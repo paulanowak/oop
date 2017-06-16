@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace Chess {
 
+    [Serializable]
     internal class Board : IEnumerable<Piece> {
 
         private Piece[,] board;
